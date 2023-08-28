@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     protected virtual void Update()
     {
         this.SnakeMovement();
-    }
+    } 
     protected virtual void SnakeMovement()
     {
         transform.Translate( this.direction*this.speed * Time.deltaTime);
