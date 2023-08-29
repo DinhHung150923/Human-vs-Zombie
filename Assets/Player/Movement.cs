@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] protected float speed = 2f;
-    [SerializeField] protected Vector3 direction = Vector3.right;
-    protected virtual void Update()
+    [SerializeField] protected float speed = 1f;
+    protected virtual void FixedUpdate()
     {
-        this.SnakeMovement();
-    } 
-    protected virtual void SnakeMovement()
+        this.SnakeSlip();
+    }
+    protected virtual void SnakeSlip()
     {
-        transform.Translate( this.direction*this.speed * Time.deltaTime);
+        Vector3 direction = InputManager.Instance.CurrentDirection;
+        transform.parent.Translate( direction* this.speed * Time.fixedDeltaTime);
     }
 }
