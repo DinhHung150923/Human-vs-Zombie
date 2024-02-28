@@ -7,11 +7,11 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float speed = 1f;
     protected virtual void FixedUpdate()
     {
-        this.SnakeSlip();
+        this.prefabMovement();
     }
-    protected virtual void SnakeSlip()
+    protected virtual void prefabMovement()
     {
-        Vector3 direction = InputManager.Instance.CurrentDirection;
+        Vector3 direction = Vector3.right;
         transform.parent.Translate( direction* this.speed * Time.fixedDeltaTime);
     }
 }
