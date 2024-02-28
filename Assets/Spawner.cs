@@ -30,5 +30,4 @@ public class Spawner : HungMonobehavior
             prefab.gameObject.SetActive(false);
         }
     }
-
 }
