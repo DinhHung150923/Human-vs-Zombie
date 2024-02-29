@@ -412,7 +412,8 @@ MonoBehaviour:
   timeDelay: 1
   prefabs:
   - {fileID: 685568346}
-  Holders: []
+  Obj: {fileID: 685568346}
+  Holder: {fileID: 1849459374}
 --- !u!1 &1575712140
 GameObject:
   m_ObjectHideFlags: 0
