@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] protected float speed = 1f;
+    [SerializeField] protected float speed = 5f;
     protected virtual void FixedUpdate()
     {
         this.prefabMovement();

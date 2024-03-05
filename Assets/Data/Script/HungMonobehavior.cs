@@ -6,7 +6,7 @@ public class HungMonobehavior : MonoBehaviour
 {
     protected virtual void Awake()
     {
-
+        this.Only1Object();
     }
     protected virtual void Start()
     {
@@ -21,6 +21,10 @@ public class HungMonobehavior : MonoBehaviour
         this.LoadComponent();
     }
     protected virtual void LoadComponent()
+    {
+
+    }
+    protected virtual void Only1Object()
     {
 
     }
