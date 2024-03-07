@@ -12,6 +12,6 @@ public class HeroSpawner : Spawner
     protected override void Only1Object()
     {
         if (HeroSpawner.instance != null) Debug.LogError("only 1 HeroSpawner to allow");
-        HeroSpawner.instance = this;
+        HeroSpawner.instance = this; 
     }
 }
