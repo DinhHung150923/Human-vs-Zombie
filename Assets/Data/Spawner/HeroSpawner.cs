@@ -7,7 +7,7 @@ public class HeroSpawner : Spawner
     [SerializeField] private static HeroSpawner instance;
     public static HeroSpawner Instance => instance;
 
-    protected string prefabOne = "Hero_1";
+    protected string prefabOne = "Knight";
     public string PrefabOne => prefabOne;
     protected override void Only1Object()
     {

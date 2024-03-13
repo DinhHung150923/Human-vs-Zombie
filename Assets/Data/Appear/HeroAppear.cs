@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : HungMonobehavior
+public class HeroAppear : HungMonobehavior
 {
     [SerializeField] protected float time = 0;
     [SerializeField] protected float timeDelay = 1;
     protected virtual void FixedUpdate()
     {
-        this.HeroAppear();
+        this.Appearing();
     }
-    protected virtual void HeroAppear()
+    protected virtual void Appearing()
     {
         this.time += Time.fixedDeltaTime;
         if (this.time < this.timeDelay) return;
         this.time = 0;
 
-        Transform newHero = HeroSpawner.Instance.Spawn(HeroSpawner.Instance.PrefabOne, transform.position, transform.rotation);
-        newHero.gameObject.SetActive(true);
+        Transform newPrefab = HeroSpawner.Instance.Spawn(HeroSpawner.Instance.PrefabOne, transform.position, transform.rotation);
+        newPrefab.gameObject.SetActive(true);
     }
 }

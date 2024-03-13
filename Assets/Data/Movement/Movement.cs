@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public abstract class Movement : HungMonobehavior
 {
-    [SerializeField] protected float speed = 5f;
+    [SerializeField] protected float speed = 2f;
+     protected Vector3 direction;
     protected virtual void FixedUpdate()
     {
         this.prefabMovement();
     }
     protected virtual void prefabMovement()
     {
-        Vector3 direction = Vector3.right;
         transform.parent.Translate( direction* this.speed * Time.fixedDeltaTime);
     }
 }
