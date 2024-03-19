@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class DamageReceiver : HungMonobehavior
 {
     [SerializeField] protected int hp = 0;
     [SerializeField] protected int hpmax = 10;
     protected override void Start()
     {
+        base.Start();
         this.Reborn();
     }
     protected virtual void Reborn()
