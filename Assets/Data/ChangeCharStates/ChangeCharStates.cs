@@ -18,7 +18,7 @@ public abstract class ChangeCharStates : HungMonobehavior
         if (this.sphereCollider != null) return;
         this.sphereCollider = GetComponent<SphereCollider>();
         this.sphereCollider.isTrigger = true;
-        this.sphereCollider.radius = 0.03f;
+        this.sphereCollider.radius = 0.1f;
         Debug.LogWarning(transform.name + " :LoadSphereCollider", gameObject);
     }
     protected virtual void LoadRigibody()
