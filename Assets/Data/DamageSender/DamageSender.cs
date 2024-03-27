@@ -5,6 +5,14 @@ using UnityEngine;
 public class DamageSender : HungMonobehavior
 {
     [SerializeField] protected int damage = 1;
+    protected override void Reset()
+    {
+        this.SetDamage();
+    }
+    protected virtual void SetDamage()
+    {
+        
+    }
     public virtual void SendObj(Transform obj)
     {
         DamageReceiver damageReceiver = obj.GetComponentInChildren<DamageReceiver>();

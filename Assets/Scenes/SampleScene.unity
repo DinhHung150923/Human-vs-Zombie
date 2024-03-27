@@ -216,7 +216,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 235275792}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &212835712
 GameObject:
@@ -250,7 +250,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2011386486}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &212835714
 MonoBehaviour:
@@ -267,7 +267,7 @@ MonoBehaviour:
   sphereCollider: {fileID: 212835716}
   _rigidbody: {fileID: 212835717}
   characterCtrl: {fileID: 2011386487}
-  timer: 0
+  timer: 0.7
   timeDamage: 1.5
   CurrentObj: {fileID: 0}
   isAttacking: 0
@@ -332,7 +332,6 @@ MonoBehaviour:
   modelCtrl: {fileID: 247372679}
   damageSender: {fileID: 193207249}
   movement: {fileID: 1921213287}
-  damageReceiver: {fileID: 734446340}
 --- !u!4 &235275792
 Transform:
   m_ObjectHideFlags: 0
@@ -347,7 +346,6 @@ Transform:
   m_Children:
   - {fileID: 247372678}
   - {fileID: 1921213286}
-  - {fileID: 357467651}
   - {fileID: 193207250}
   - {fileID: 734446339}
   - {fileID: 1805493751}
@@ -507,51 +505,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
---- !u!1 &357467650
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 357467651}
-  - component: {fileID: 357467652}
-  m_Layer: 0
-  m_Name: Despawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &357467651
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 357467650}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 235275792}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &357467652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 357467650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa9672e57f5a50c4a9466ce4adb92767, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterCtrl: {fileID: 235275791}
 --- !u!4 &427625711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2495179306445934141, guid: b1880fdf73a4c5243b0d77e20da8df69, type: 3}
@@ -717,7 +670,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2011386486}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519687915
 MonoBehaviour:
@@ -728,12 +681,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 519687913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 143e886a36cc2c947a779ba65d8559fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 769d837166a5924439e9636490873466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 0
-  hpmax: 10
+  hpmax: 15
+  timeDieDelay: 2
   sphereCollider: {fileID: 519687916}
+  characterCtrl: {fileID: 2011386487}
 --- !u!135 &519687916
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -812,7 +767,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 235275792}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &734446340
 MonoBehaviour:
@@ -827,8 +782,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 0
-  hpmax: 2
+  hpmax: 10
+  timeDieDelay: 2
   sphereCollider: {fileID: 734446341}
+  characterCtrl: {fileID: 235275791}
 --- !u!135 &734446341
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -872,7 +829,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2011386486}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &895331950
 MonoBehaviour:
@@ -1460,7 +1417,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 235275792}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1805493752
 MonoBehaviour:
@@ -1621,7 +1578,6 @@ MonoBehaviour:
   modelCtrl: {fileID: 0}
   damageSender: {fileID: 0}
   movement: {fileID: 0}
-  damageReceiver: {fileID: 0}
 --- !u!1 &1921213285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,7 +1664,6 @@ Transform:
   m_Children:
   - {fileID: 1077698960}
   - {fileID: 274885613}
-  - {fileID: 2113928925}
   - {fileID: 895331949}
   - {fileID: 519687914}
   - {fileID: 212835713}
@@ -1730,7 +1685,6 @@ MonoBehaviour:
   modelCtrl: {fileID: 1077698961}
   damageSender: {fileID: 895331950}
   movement: {fileID: 274885614}
-  damageReceiver: {fileID: 519687915}
 --- !u!1 &2091874137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1776,37 +1730,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2113928924
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2113928925}
-  m_Layer: 0
-  m_Name: Despawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2113928925
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2113928924}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2011386486}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3112882294339555073 stripped
 Transform:

@@ -10,14 +10,11 @@ public abstract class CharacterCtrl : HungMonobehavior
     public DamageSender DamageSender => damageSender;
     [SerializeField] protected Movement movement;
     public Movement Movement => movement;
-    [SerializeField] protected DamageReceiver damageReceiver;
-    public DamageReceiver DamageReceiver => damageReceiver;
     protected override void LoadComponent()
     {
         this.LoadModel();
         this.LoadDamageSender();
         this.LoadHeroMovement();
-        this.LoadDamageReceiver();
     }
     protected virtual void LoadModel()
     {
@@ -36,11 +33,5 @@ public abstract class CharacterCtrl : HungMonobehavior
         if (this.movement != null) return;
         this.movement = GetComponentInChildren<Movement>();
         Debug.LogWarning(transform.name + " :LoadMovement", gameObject);
-    }
-    protected virtual void LoadDamageReceiver()
-    {
-        if (this.damageReceiver != null) return;
-        this.damageReceiver = GetComponentInChildren<DamageReceiver>();
-        Debug.LogWarning(transform.name + " :LoadDamageReceiver", gameObject);
     }
 }
