@@ -7,6 +7,12 @@ public abstract class ChangeCharStates : HungMonobehavior
     [SerializeField] protected SphereCollider sphereCollider;
     [SerializeField] protected Rigidbody _rigidbody;
     [SerializeField] protected CharacterCtrl characterCtrl;
+    [Header("CharacterState")]
+    [SerializeField] protected float timer = 0.75f;
+    [SerializeField] protected float timeDamage = 1.5f;
+    [SerializeField] protected Transform CurrentObj;
+    [SerializeField] protected DamageReceiver damageReceiver;
+    [SerializeField] protected bool isAttacking = false;
     protected override void LoadComponent()
     {
         this.LoadSphereCollider();
@@ -18,7 +24,7 @@ public abstract class ChangeCharStates : HungMonobehavior
         if (this.sphereCollider != null) return;
         this.sphereCollider = GetComponent<SphereCollider>();
         this.sphereCollider.isTrigger = true;
-        this.sphereCollider.radius = 0.1f;
+        this.sphereCollider.radius = 0.6f;
         Debug.LogWarning(transform.name + " :LoadSphereCollider", gameObject);
     }
     protected virtual void LoadRigibody()

@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class ChangeHeroStates : ChangeCharStates
 {
-    [SerializeField] protected float timer = 0;
-    [SerializeField] protected float timeDamage = 1.5f;
-    [SerializeField] protected Transform CurrentObj;
-    [SerializeField] protected bool isAttacking = false;
+    protected virtual void FixedUpdate()
+    {
+        this.CheckIsAttacking();
+    }
     protected override void OnTriggerEnter(Collider other)
     {
         if(other.transform.parent.CompareTag("Enemy"))
         {
+            this.damageReceiver = other.GetComponent<DamageReceiver>();
+            if (this.damageReceiver == null) return;
+
             this.characterCtrl.ModelCtrl.Animator.SetBool("IsAttacking", true);
             this.characterCtrl.Movement.gameObject.SetActive(false);
             this.CurrentObj = other.transform.parent;
             this.isAttacking = true;
         }
     }
-    protected virtual void OnTriggerStay(Collider other)
+    protected virtual void CheckIsAttacking()
     {
-        if (other.transform.parent.CompareTag("Enemy"))
+        if (this.isAttacking == true)
         {
-            this.AttackCoolDown(other.transform);
+            this.AttackCoolDown(this.damageReceiver.transform);
+            if (this.CurrentObj.gameObject.activeSelf) return;
+            this.ReturnToMove();
         }
     }
     protected virtual void AttackCoolDown(Transform obj)
@@ -32,18 +37,6 @@ public class ChangeHeroStates : ChangeCharStates
         this.timer = 0;
 
         this.characterCtrl.DamageSender.SendObj(obj);
-    }
-    protected virtual void FixedUpdate()
-    {
-        this.CheckIsAttacking();
-    }
-    protected virtual void CheckIsAttacking()
-    {
-        if (this.isAttacking == true)
-        {
-            if (this.CurrentObj.gameObject.activeSelf) return;
-            this.ReturnToMove();
-        }
     }
     protected virtual void ReturnToMove()
     {

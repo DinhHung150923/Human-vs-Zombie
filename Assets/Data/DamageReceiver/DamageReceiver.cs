@@ -28,8 +28,8 @@ public abstract class DamageReceiver : HungMonobehavior
     {
         if (this.sphereCollider != null) return;
         this.sphereCollider = GetComponent<SphereCollider>();
-        sphereCollider.isTrigger = true;
-        sphereCollider.radius = 0.6f;
+        this.sphereCollider.isTrigger = true;
+        this.sphereCollider.radius = 0.1f;
         Debug.LogWarning(transform.name + " :LoadShereCollider", gameObject);
     }
     protected override void Start()
