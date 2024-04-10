@@ -9,10 +9,6 @@ public class DamageSender : HungMonobehavior
     {
         this.SetDamage();
     }
-    protected virtual void SetDamage()
-    {
-        
-    }
     public virtual void SendObj(Transform obj)
     {
         DamageReceiver damageReceiver = obj.GetComponentInChildren<DamageReceiver>();
@@ -22,5 +18,9 @@ public class DamageSender : HungMonobehavior
     public virtual void SendDamage(DamageReceiver damageReceiver)
     {
         damageReceiver.Deduct(this.damage);
+    }
+    protected virtual void SetDamage()
+    {
+
     }
 }

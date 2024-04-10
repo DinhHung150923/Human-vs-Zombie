@@ -5,7 +5,7 @@ using UnityEngine;
 public class HeroAppear : HungMonobehavior
 {
     [SerializeField] protected float time = 0;
-    [SerializeField] protected float timeDelay = 1;
+    [SerializeField] protected float timeDelay = 3;
     protected virtual void FixedUpdate()
     {
         this.Appearing();

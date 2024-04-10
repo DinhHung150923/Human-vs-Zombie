@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieAppear : HungMonobehavior
+public class EnemyAppear : HungMonobehavior
 {
     [SerializeField] protected float time = 0;
-    [SerializeField] protected float timeDelay = 1;
+    [SerializeField] protected float timeDelay = 3;
     protected virtual void FixedUpdate()
     {
         this.Appearing();

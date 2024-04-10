@@ -1,28 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[RequireComponent(typeof(SphereCollider))]
+
 public abstract class DamageReceiver : HungMonobehavior
 {
     [SerializeField] protected int hp = 0;
     [SerializeField] protected int hpmax = 10;
     [SerializeField] protected int timeDieDelay = 2;
     [SerializeField] protected SphereCollider sphereCollider;
-    [SerializeField] protected CharacterCtrl characterCtrl;
+    [SerializeField] protected bool isDead = false;
     protected override void Reset()
     {
         base.Reset();
         this.SetHpmax();
     }
+    protected void OnEnable()
+    {
+        this.Reborn();
+    }
     protected override void LoadComponent()
     {
         this.LoadSphereCollider();
-        this.LoadCharacterCtrl();
-    }
-    protected virtual void LoadCharacterCtrl()
-    {
-        if (this.characterCtrl != null) return;
-        this.characterCtrl = GetComponentInParent<CharacterCtrl>();
-        Debug.LogWarning(transform.name + "LoadCharacterCtrl :", gameObject);
     }
     protected virtual void LoadSphereCollider()
     {
@@ -32,11 +31,6 @@ public abstract class DamageReceiver : HungMonobehavior
         this.sphereCollider.radius = 0.1f;
         Debug.LogWarning(transform.name + " :LoadShereCollider", gameObject);
     }
-    protected override void Start()
-    {
-        base.Start();
-        this.Reborn();
-    }
     protected virtual void FixedUpdate()
     {
         this.CheckIsDead();
@@ -44,9 +38,12 @@ public abstract class DamageReceiver : HungMonobehavior
     protected virtual void Reborn()
     {
         this.hp = this.hpmax;
+        this.isDead = false;
     }
     public virtual void Deduct(int deduct)
     {
+        if (this.isDead) return;
+
         this.hp -= deduct;
         if (this.hp < 0) this.hp = 0;
     }
@@ -58,6 +55,7 @@ public abstract class DamageReceiver : HungMonobehavior
     protected virtual void CheckIsDead()
     {
         if (!this.Isdead()) return;
+        this.isDead = true;
         this.Ondead();
     }
     protected virtual void SetHpmax()
