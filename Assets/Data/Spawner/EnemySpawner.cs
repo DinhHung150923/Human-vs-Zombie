@@ -9,7 +9,7 @@ public class EnemySpawner : Spawner
 
     protected string prefabOne = "Zombie";
     public string PrefabOne => prefabOne;
-    protected override void Only1Object()
+    protected override void Only1Script()
     {
         if (EnemySpawner.instance != null) Debug.LogError("only 1 ZombieSpawner to allow");
         EnemySpawner.instance = this; 

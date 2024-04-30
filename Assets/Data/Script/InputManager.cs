@@ -8,7 +8,7 @@ public class InputManager : HungMonobehavior
     public static InputManager Instance => instance;
     [SerializeField] protected float onClick;
     public float OnClick => onClick;
-    protected override void Only1Object()
+    protected override void Only1Script()
     {
         if (InputManager.instance != null) Debug.LogError("only 1 inputmanager to alow");
         InputManager.instance = this;

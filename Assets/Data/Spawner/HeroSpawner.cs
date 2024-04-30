@@ -9,7 +9,7 @@ public class HeroSpawner : Spawner
 
     protected string prefabOne = "Knight";
     public string PrefabOne => prefabOne;
-    protected override void Only1Object()
+    protected override void Only1Script()
     {
         if (HeroSpawner.instance != null) Debug.LogError("only 1 HeroSpawner to allow");
         HeroSpawner.instance = this; 

@@ -6,7 +6,9 @@ using UnityEngine;
 public abstract class DamageReceiver : HungMonobehavior
 {
     [SerializeField] protected int hp = 0;
+    public int Hp => hp;
     [SerializeField] protected int hpmax = 10;
+    public int Hpmax => hpmax;
     [SerializeField] protected int timeDieDelay = 2;
     [SerializeField] protected SphereCollider sphereCollider;
     [SerializeField] protected bool isDead = false;

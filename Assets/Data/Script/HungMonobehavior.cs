@@ -6,7 +6,7 @@ public class HungMonobehavior : MonoBehaviour
 {
     protected virtual void Awake()
     {
-        this.Only1Object();
+        this.Only1Script();
     }
     protected virtual void Start()
     {
@@ -24,7 +24,7 @@ public class HungMonobehavior : MonoBehaviour
     {
 
     }
-    protected virtual void Only1Object()
+    protected virtual void Only1Script()
     {
 
     }
