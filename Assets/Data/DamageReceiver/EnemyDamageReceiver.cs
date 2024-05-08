@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyDamageReceiver : DamageReceiver
 {
+    [SerializeField] protected float ZombiePrize = 10;
     [SerializeField] protected CharacterCtrl characterCtrl;
     protected override void LoadComponent()
     {
@@ -13,13 +14,15 @@ public class EnemyDamageReceiver : DamageReceiver
     protected virtual void LoadCharacterCtrl()
     {
         if (this.characterCtrl != null) return;
-        this.characterCtrl = GetComponentInParent<CharacterCtrl>();
+        this.characterCtrl = transform.parent.GetComponent<CharacterCtrl>();
         Debug.LogWarning(transform.name + "LoadCharacterCtrl :", gameObject);
     }
     protected override void Ondead()
     {
         this.characterCtrl.ModelCtrl.Animator.SetBool("IsDying", true);
-        Invoke(nameof(this.DespawnEnemy), this.timeDieDelay);
+        PlayerCtrl.Instance.CoinManager.Addcoin(this.ZombiePrize);
+        //Invoke(nameof(this.DespawnEnemy), this.timeDieDelay);
+        this.DespawnEnemy();
     }
     protected virtual void DespawnEnemy()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CharacterCtrl : HungMonobehavior
+public class CharacterCtrl : HungMonobehavior
 {
     [SerializeField] protected ModelCtrl modelCtrl;
     public ModelCtrl ModelCtrl => modelCtrl;

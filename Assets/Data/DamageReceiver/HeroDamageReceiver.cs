@@ -12,7 +12,7 @@ public class HeroDamageReceiver : DamageReceiver
     protected virtual void LoadCharacterCtrl()
     {
         if (this.characterCtrl != null) return;
-        this.characterCtrl = GetComponentInParent<CharacterCtrl>();
+        this.characterCtrl = transform.parent.GetComponent<CharacterCtrl>();
         Debug.LogWarning(transform.name + "LoadCharacterCtrl :", gameObject);
     }
     protected override void SetHpmax()
@@ -22,7 +22,8 @@ public class HeroDamageReceiver : DamageReceiver
     protected override void Ondead()
     {
         this.characterCtrl.ModelCtrl.Animator.SetBool("IsDying", true);
-        Invoke(nameof(this.DespawnEnemy), this.timeDieDelay);
+        //Invoke(nameof(this.DespawnEnemy), this.timeDieDelay);
+        this.DespawnEnemy();
     }
     protected virtual void DespawnEnemy()
     {
