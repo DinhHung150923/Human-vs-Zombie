@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class BtnReturnHome : BaseButton
+public class BtnReStartLevel : BaseButton
 {
     protected override void Onclick()
     {
-        SceneManager.LoadSceneAsync(0);
+        UIManagerInGame.Instance.ReStartLevel();
     }
 }

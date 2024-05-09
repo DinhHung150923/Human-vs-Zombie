@@ -15,6 +15,6 @@ public class MEDamageReceiver : DamageReceiver
     }
     protected override void Ondead()
     {
-        UIManager.Instance.VictoryScreen.SetActive(true);
+        UIManagerInGame.Instance.VictoryScreen.SetActive(true);
     }
 }

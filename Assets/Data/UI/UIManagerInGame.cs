@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class UIManager : HungMonobehavior
+public class UIManagerInGame : HungMonobehavior
 {
-    [SerializeField] private static UIManager instance;
-    public static UIManager Instance => instance;
+    [SerializeField] private static UIManagerInGame instance;
+    public static UIManagerInGame Instance => instance;
     [SerializeField] protected GameObject gameOverScreen;
     public GameObject GameOverScreen => gameOverScreen;
     [SerializeField] protected GameObject victoryScreen;
@@ -16,8 +17,8 @@ public class UIManager : HungMonobehavior
     }
     protected override void Only1Script()
     {
-        if (UIManager.instance != null) Debug.LogError("only 1 UIManager to allow");
-        UIManager.instance = this;
+        if (UIManagerInGame.instance != null) Debug.LogError("only 1 UIManagerInGame to allow");
+        UIManagerInGame.instance = this;
     }
     protected override void LoadComponent()
     {
@@ -35,6 +36,10 @@ public class UIManager : HungMonobehavior
         if (this.victoryScreen != null) return;
         this.victoryScreen = GameObject.Find("VictoryScreen");
         Debug.LogWarning(transform.name + " :LoadVictoryScreen", gameObject);
+    }
+    public void ReStartLevel()
+    {
+        GameManager.Instance.ReloadScenen();
     }
     protected virtual void SetAvtiveUI()
     {
