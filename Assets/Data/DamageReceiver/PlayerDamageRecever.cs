@@ -15,7 +15,7 @@ public class PlayerDamageRecever : DamageReceiver
     }
     protected override void Ondead()
     {
-        throw new System.NotImplementedException();
+        UIManager.Instance.GameOverScreen.SetActive(true);
     }
 
 }

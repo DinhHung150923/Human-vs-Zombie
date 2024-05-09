@@ -14,7 +14,7 @@ public class PlayerCtrl : HungMonobehavior
     public CoinManager CoinManager => coinManager;
     protected override void Only1Script()
     {
-        if (PlayerCtrl.instance != null) Debug.LogError("only 1 HeroSpawner to allow");
+        if (PlayerCtrl.instance != null) Debug.LogError("only 1 PlayerCtrl to allow");
         PlayerCtrl.instance = this;
     }
     protected override void LoadComponent()

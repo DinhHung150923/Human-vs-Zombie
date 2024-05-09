@@ -15,6 +15,6 @@ public class MEDamageReceiver : DamageReceiver
     }
     protected override void Ondead()
     {
-        throw new System.NotImplementedException();
+        UIManager.Instance.VictoryScreen.SetActive(true);
     }
 }
