@@ -16,5 +16,6 @@ public class MEDamageReceiver : DamageReceiver
     protected override void Ondead()
     {
         UIManagerInGame.Instance.VictoryScreen.SetActive(true);
+        GameManager.Instance.PauseGame();
     }
 }

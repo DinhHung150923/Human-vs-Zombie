@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 
-public abstract class DamageReceiver : HungMonobehavior
+public abstract class DamageReceiver : HungMonoBehaviour
 {
     [SerializeField] protected int hp = 0;
     public int Hp => hp;
@@ -49,14 +49,14 @@ public abstract class DamageReceiver : HungMonobehavior
         this.hp -= deduct;
         if (this.hp < 0) this.hp = 0;
     }
-    public virtual bool Isdead()
+    public virtual bool IsDead()
     {
         if (this.hp == 0) return true;
         return false;
     }
     protected virtual void CheckIsDead()
     {
-        if (!this.Isdead()) return;
+        if (!this.IsDead()) return;
         this.isDead = true;
         this.Ondead();
     }

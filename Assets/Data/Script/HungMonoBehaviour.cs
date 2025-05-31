@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HungMonobehavior : MonoBehaviour
+public class HungMonoBehaviour : MonoBehaviour
 {
     protected virtual void Awake()
     {

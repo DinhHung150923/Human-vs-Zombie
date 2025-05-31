@@ -19,9 +19,8 @@ public class EnemyDamageReceiver : DamageReceiver
     }
     protected override void Ondead()
     {
-        this.characterCtrl.ModelCtrl.Animator.SetBool("IsDying", true);
+        this.characterCtrl.ChangeCharState.ChangeMainState(MainState.Dying);
         PlayerCtrl.Instance.CoinManager.Addcoin(this.ZombiePrize);
-        //Invoke(nameof(this.DespawnEnemy), this.timeDieDelay);
         this.DespawnEnemy();
     }
     protected virtual void DespawnEnemy()

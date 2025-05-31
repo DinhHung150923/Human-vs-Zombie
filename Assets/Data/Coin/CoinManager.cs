@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinManager : HungMonobehavior
+public class CoinManager : HungMonoBehaviour
 {
     [SerializeField] protected float coin = 1;
     public float Coin => coin;

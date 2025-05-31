@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class btnSummonHerro : BaseButton
+public class BtnSummonHerro : BaseButton
 {
     protected override void Onclick()
     {

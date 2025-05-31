@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCtrl : HungMonobehavior
+public class PlayerCtrl : HungMonoBehaviour
 {
     [SerializeField] private static PlayerCtrl instance;
     public static PlayerCtrl Instance => instance;

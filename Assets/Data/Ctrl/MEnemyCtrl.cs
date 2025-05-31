@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MEnemyCtrl : HungMonobehavior
+public class MEnemyCtrl : HungMonoBehaviour
 {
     [SerializeField] private static MEnemyCtrl instance;
     public static MEnemyCtrl Instance => instance;

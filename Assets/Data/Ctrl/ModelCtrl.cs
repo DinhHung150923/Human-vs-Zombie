@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModelCtrl : HungMonobehavior
+public class ModelCtrl : HungMonoBehaviour
 {
     [SerializeField] protected Animator animator;
     public Animator Animator => animator;

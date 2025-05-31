@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class BtnCloseOption : BaseButton
+public class BtnNextLevel : BaseButton
 {
     protected override void Onclick()
     {
-        UIManagerInHome.Instance.CloseOption();
+        SceneManager.LoadSceneAsync(3);
     }
 }

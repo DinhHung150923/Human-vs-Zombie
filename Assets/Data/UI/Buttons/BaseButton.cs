@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class BaseButton : HungMonobehavior
+public abstract class BaseButton : HungMonoBehaviour
 {
     [SerializeField] protected Button button;
     protected override void Start()

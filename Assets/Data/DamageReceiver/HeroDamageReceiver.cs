@@ -21,8 +21,7 @@ public class HeroDamageReceiver : DamageReceiver
     }
     protected override void Ondead()
     {
-        this.characterCtrl.ModelCtrl.Animator.SetBool("IsDying", true);
-        //Invoke(nameof(this.DespawnEnemy), this.timeDieDelay);
+        this.characterCtrl.ChangeCharState.ChangeMainState(MainState.Dying);
         this.DespawnEnemy();
     }
     protected virtual void DespawnEnemy()

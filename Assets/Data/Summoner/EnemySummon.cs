@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySummon : HungMonobehavior
+public class EnemySummon : HungMonoBehaviour
 {
     [SerializeField] protected float time = 0;
     [SerializeField] protected float timeDelay = 10;
@@ -18,5 +18,6 @@ public class EnemySummon : HungMonobehavior
 
         Transform newPrefab = EnemySpawner.Instance.Spawn(EnemySpawner.Instance.PrefabOne, transform.position, transform.rotation);
         newPrefab.gameObject.SetActive(true);
+        //EnemyCtrl.Instance.ChangeCharState.ChangeMainState(MainState.Moving);
     }
 }

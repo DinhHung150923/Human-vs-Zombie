@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UILevelStageManager : HungMonobehavior
+public class UILevelStageManager : HungMonoBehaviour
 {
     [SerializeField] private static UILevelStageManager instance;
     public static UILevelStageManager Instance => instance;

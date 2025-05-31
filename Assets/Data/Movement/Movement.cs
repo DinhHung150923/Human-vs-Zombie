@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Movement : HungMonobehavior
+public abstract class Movement : HungMonoBehaviour
 {
     [SerializeField] protected float speed = 2f;
      protected Vector3 direction;

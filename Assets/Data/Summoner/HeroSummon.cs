@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroSummon : HungMonobehavior
+public class HeroSummon : HungMonoBehaviour
 {
     [SerializeField] protected PlayerCtrl playerCtrl;
     [SerializeField] protected int knightPrize = 20;
@@ -32,6 +32,7 @@ public class HeroSummon : HungMonobehavior
     {
         Transform newPrefab = HeroSpawner.Instance.Spawn(HeroSpawner.Instance.PrefabOne, transform.position, transform.rotation);
         newPrefab.gameObject.SetActive(true);
+        //HeroCtrl.Instance.ChangeCharState.ChangeMainState(MainState.Moving);
 
         this.playerCtrl.CoinManager.DeductCoin(this.knightPrize);
     }

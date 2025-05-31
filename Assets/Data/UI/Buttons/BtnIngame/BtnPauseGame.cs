@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BtnOpenOption : BaseButton
+public class BtnPauseGame : BaseButton
 {
     protected override void Onclick()
     {
-        UIManagerInHome.Instance.OpenOption();
+        GameManager.Instance.PauseGame();
+        UIManagerInGame.Instance.OpenPauseGame();
     }
 }
