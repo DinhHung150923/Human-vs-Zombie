@@ -4,7 +4,19 @@ using UnityEngine;
 
 public abstract class AttackBase : IDamageStrategy
 {
-    protected int damage = 10;
+    protected int damage = 1;
+    protected float timer = 0;
+    protected float delayTimer = 1;
+    
+
+    protected void DelayAttack(GameObject target)
+    {
+        this.timer += Time.fixedDeltaTime;
+        if (this.timer <= this.delayTimer) return;
+        this.timer = 0;
+
+        this.DealDamage(target);
+    }
     protected void DealDamage(GameObject target)
     {
         var receiver = target.GetComponent<DamageReceiver>();

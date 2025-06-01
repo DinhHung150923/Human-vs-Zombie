@@ -30,8 +30,9 @@ public abstract class DamageSender : HungMonoBehaviour
     {
         if (this._rigidbody2D != null) return;
         this._rigidbody2D = GetComponent<Rigidbody2D>();
-        this._rigidbody2D.isKinematic = true;
-        Debug.LogWarning(transform.name + " :LoadRigibody", gameObject);
+        this._rigidbody2D.useFullKinematicContacts = true;
+        this._rigidbody2D.freezeRotation = true;
+        Debug.LogWarning(transform.name + " :LoadRigibody2D", gameObject);
     }
     protected virtual void LoadCharacterCtrl()
     {
@@ -40,5 +41,5 @@ public abstract class DamageSender : HungMonoBehaviour
         Debug.LogWarning(transform.name + " :LoadCharacterCtrl", gameObject);
 
     }
-    protected abstract void OnTriggerEnter(Collider other);
+    protected abstract void OnTriggerEnter2D(Collider2D other);
 }

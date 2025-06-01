@@ -261,6 +261,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 193207250}
+  - component: {fileID: 193207253}
+  - component: {fileID: 193207252}
   - component: {fileID: 193207251}
   m_Layer: 0
   m_Name: DamageSender
@@ -296,7 +298,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e20c29927cc28a448bb51f607e61bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  characterCtrl: {fileID: 235275793}
+  circleCollider2D: {fileID: 193207253}
+  _rigidbody2D: {fileID: 193207252}
+--- !u!50 &193207252
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193207248}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &193207253
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193207248}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.6
 --- !u!1 &212835712
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,11 +347,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 212835713}
-  - component: {fileID: 212835716}
   - component: {fileID: 212835714}
-  - component: {fileID: 212835717}
   m_Layer: 0
-  m_Name: States
+  m_Name: State
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,46 +379,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 212835712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfbf041d7f48bef4a9813b2fbfde2bd3, type: 3}
+  m_Script: {fileID: 11500000, guid: 92eff34286ee8fb469dd07bc6742629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMainState: 0
   characterCtrl: {fileID: 2043456892}
-  sphereCollider: {fileID: 212835716}
-  _rigidbody: {fileID: 212835717}
-  timer: 0.75
-  timeDamage: 1.5
-  isAttacking: 0
-  CurrentDamageReceiver: {fileID: 0}
-  damageReceiver: {fileID: 0}
---- !u!135 &212835716
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212835712}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.6
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &212835717
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212835712}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &216281426
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,12 +467,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 235275790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69882989f645fce42ba42f5051f160f1, type: 3}
+  m_Script: {fileID: 11500000, guid: c635247a6f30dab40b4ed8fbc18d2c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   modelCtrl: {fileID: 247372679}
-  damageSender: {fileID: 193207251}
   movement: {fileID: 1921213287}
+  changeCharState: {fileID: 1805493752}
 --- !u!1 &241647596
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e3ed4e6b425d64abb2ea38b1513f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1.5
 --- !u!1 &278846075
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +986,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1042,7 +1046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &284470884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1800,7 +1804,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2158,22 +2162,25 @@ MonoBehaviour:
   hp: 0
   hpmax: 15
   timeDieDelay: 2
-  sphereCollider: {fileID: 519687916}
+  circleCollider2D: {fileID: 519687916}
   isDead: 0
   characterCtrl: {fileID: 2043456892}
---- !u!135 &519687916
-SphereCollider:
+--- !u!58 &519687916
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519687913}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &550568956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2893,23 +2900,26 @@ MonoBehaviour:
   hp: 0
   hpmax: 10
   timeDieDelay: 2
-  sphereCollider: {fileID: 734446341}
+  circleCollider2D: {fileID: 734446341}
   isDead: 0
   ZombiePrize: 10
   characterCtrl: {fileID: 235275793}
---- !u!135 &734446341
-SphereCollider:
+--- !u!58 &734446341
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734446338}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &779199939
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,6 +3235,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 895331949}
+  - component: {fileID: 895331952}
+  - component: {fileID: 895331951}
   - component: {fileID: 895331950}
   m_Layer: 0
   m_Name: DamageSender
@@ -3260,7 +3272,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b36697fd7a27a46a2b892b9b3c8e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  characterCtrl: {fileID: 2043456892}
+  circleCollider2D: {fileID: 895331952}
+  _rigidbody2D: {fileID: 895331951}
+--- !u!50 &895331951
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895331948}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &895331952
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895331948}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.6
 --- !u!1 &915048057
 GameObject:
   m_ObjectHideFlags: 0
@@ -3544,7 +3595,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3766,24 +3817,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d28d38752e8c24599a967197820a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 50
+  hp: 0
   hpmax: 50
   timeDieDelay: 2
-  sphereCollider: {fileID: 1004166343}
+  circleCollider2D: {fileID: 1004166343}
   isDead: 0
---- !u!135 &1004166343
-SphereCollider:
+--- !u!58 &1004166343
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004166340}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.3
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1008521444
 GameObject:
   m_ObjectHideFlags: 0
@@ -5159,24 +5213,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a10e7f00c0e704a868efaee9ac96f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 50
+  hp: 0
   hpmax: 50
   timeDieDelay: 2
-  sphereCollider: {fileID: 1402434504}
+  circleCollider2D: {fileID: 1402434504}
   isDead: 0
---- !u!135 &1402434504
-SphereCollider:
+--- !u!58 &1402434504
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402434501}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.3
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1405917012
 GameObject:
   m_ObjectHideFlags: 0
@@ -5312,7 +5369,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6931,11 +6988,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1805493751}
-  - component: {fileID: 1805493754}
-  - component: {fileID: 1805493753}
   - component: {fileID: 1805493752}
   m_Layer: 0
-  m_Name: States
+  m_Name: State
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6965,46 +7020,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1805493750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c77c9601d52a8e0449b2ec2b03ed0200, type: 3}
+  m_Script: {fileID: 11500000, guid: 92eff34286ee8fb469dd07bc6742629b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMainState: 0
   characterCtrl: {fileID: 235275793}
-  sphereCollider: {fileID: 1805493754}
-  _rigidbody: {fileID: 1805493753}
-  timer: 0.75
-  timeDamage: 1.5
-  isAttacking: 0
-  CurrentDamageReceiver: {fileID: 0}
-  damageReceiver: {fileID: 0}
---- !u!54 &1805493753
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1805493750}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!135 &1805493754
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1805493750}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.6
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1823229541
 GameObject:
   m_ObjectHideFlags: 0
@@ -7470,7 +7490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c943b787b971784593e461ca7b47238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 0.5
 --- !u!1 &1924843266
 GameObject:
   m_ObjectHideFlags: 0
@@ -7970,12 +7990,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2043456890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69882989f645fce42ba42f5051f160f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 3740e8e84517687488b62a662eb1c5e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   modelCtrl: {fileID: 1077698961}
-  damageSender: {fileID: 895331950}
   movement: {fileID: 274885614}
+  changeCharState: {fileID: 212835714}
 --- !u!1 &2091874137
 GameObject:
   m_ObjectHideFlags: 0

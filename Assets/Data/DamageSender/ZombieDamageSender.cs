@@ -8,10 +8,11 @@ public class ZombieDamageSender : DamageSender
     {
         this.damageStrategy = new MeleeSingleAttack();
     }
-    protected override void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.transform.parent.CompareTag("Hero"))
         {
+            
             this.damageStrategy?.Apply(other.gameObject);
             this.characterCtrl.ChangeCharState.ChangeMainState(MainState.Attacking);
         }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(CircleCollider2D))]
 
 public abstract class DamageReceiver : HungMonoBehaviour
 {
@@ -10,7 +10,7 @@ public abstract class DamageReceiver : HungMonoBehaviour
     [SerializeField] protected int hpmax = 10;
     public int Hpmax => hpmax;
     [SerializeField] protected int timeDieDelay = 2;
-    [SerializeField] protected SphereCollider sphereCollider;
+    [SerializeField] protected CircleCollider2D circleCollider2D;
     [SerializeField] protected bool isDead = false;
     protected override void Reset()
     {
@@ -23,15 +23,15 @@ public abstract class DamageReceiver : HungMonoBehaviour
     }
     protected override void LoadComponent()
     {
-        this.LoadSphereCollider();
+        this.LoadCircleCollider2D();
     }
-    protected virtual void LoadSphereCollider()
+    protected virtual void LoadCircleCollider2D()
     {
-        if (this.sphereCollider != null) return;
-        this.sphereCollider = GetComponent<SphereCollider>();
-        this.sphereCollider.isTrigger = true;
-        this.sphereCollider.radius = 0.1f;
-        Debug.LogWarning(transform.name + " :LoadShereCollider", gameObject);
+        if (this.circleCollider2D != null) return;
+        this.circleCollider2D = GetComponent<CircleCollider2D>();
+        this.circleCollider2D.isTrigger = true;
+        this.circleCollider2D.radius = 0.1f;
+        Debug.LogWarning(transform.name + " :LoadCircleCollider2D", gameObject);
     }
     protected virtual void FixedUpdate()
     {

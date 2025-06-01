@@ -32,7 +32,6 @@ public class HeroSummon : HungMonoBehaviour
     {
         Transform newPrefab = HeroSpawner.Instance.Spawn(HeroSpawner.Instance.PrefabOne, transform.position, transform.rotation);
         newPrefab.gameObject.SetActive(true);
-        //HeroCtrl.Instance.ChangeCharState.ChangeMainState(MainState.Moving);
 
         this.playerCtrl.CoinManager.DeductCoin(this.knightPrize);
     }

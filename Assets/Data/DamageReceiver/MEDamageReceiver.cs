@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MEDamageReceiver : DamageReceiver
 {
-    protected override void LoadSphereCollider()
+    protected override void LoadCircleCollider2D()
     {
-        base.LoadSphereCollider();
-        this.sphereCollider.radius = 1.3f;
+        base.LoadCircleCollider2D();
+        this.circleCollider2D.radius = 1.3f;
     }
     protected override void SetHpmax()
     {

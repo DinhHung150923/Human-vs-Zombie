@@ -18,6 +18,6 @@ public class EnemySummon : HungMonoBehaviour
 
         Transform newPrefab = EnemySpawner.Instance.Spawn(EnemySpawner.Instance.PrefabOne, transform.position, transform.rotation);
         newPrefab.gameObject.SetActive(true);
-        //EnemyCtrl.Instance.ChangeCharState.ChangeMainState(MainState.Moving);
+        
     }
 }

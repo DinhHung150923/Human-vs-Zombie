@@ -6,6 +6,10 @@ public class ChangeCharState : HungMonoBehaviour
 {
     public MainState currentMainState = MainState.Idle;
     [SerializeField] protected CharacterCtrl characterCtrl;
+    protected override void Start()
+    {
+        this.characterCtrl.ModelCtrl.Animator.SetBool("IsMoving", true);
+    }
     protected override void LoadComponent()
     {
         this.LoadCharacterCtrl();
@@ -40,11 +44,11 @@ public class ChangeCharState : HungMonoBehaviour
                 Debug.Log("Moving");
                 break;
             case MainState.Attacking:
+                this.characterCtrl.Movement.gameObject.SetActive(false);
                 this.characterCtrl.ModelCtrl.Animator.SetTrigger("Attack");
                 Debug.Log("Attacking");
                 break;
             case MainState.Dying:
-                this.characterCtrl.Movement.gameObject.SetActive(false);
                 this.characterCtrl.ModelCtrl.Animator.SetTrigger("Die");
                 Debug.Log("Dying");
                 break;

@@ -8,8 +8,9 @@ public class KnightDamageSender : DamageSender
     {
         this.damageStrategy = new MeleeSingleAttack();
     }
-    protected override void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
+        
         if (other.transform.parent.CompareTag("Enemy"))
         {
             this.damageStrategy?.Apply(other.gameObject);
