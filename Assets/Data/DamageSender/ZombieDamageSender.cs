@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class ZombieDamageSender : DamageSender
 {
-    protected override void Start()
-    {
-        this.damageStrategy = new MeleeSingleAttack();
-    }
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.transform.parent.CompareTag("Hero"))
         {
-            
-            this.damageStrategy?.Apply(other.gameObject);
+            Debug.Log(other.transform);
+            this.characterCtrl.CharAttack.Attack(other.transform);
             this.characterCtrl.ChangeCharState.ChangeMainState(MainState.Attacking);
         }
     }

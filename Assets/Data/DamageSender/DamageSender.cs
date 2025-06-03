@@ -10,8 +10,6 @@ public abstract class DamageSender : HungMonoBehaviour
     [SerializeField] protected CharacterCtrl characterCtrl;
     [SerializeField] protected CircleCollider2D circleCollider2D;
     [SerializeField] protected Rigidbody2D _rigidbody2D;
-    protected IDamageStrategy damageStrategy;
-
     protected override void LoadComponent()
     {
         this.LoadCircleCollider2D();

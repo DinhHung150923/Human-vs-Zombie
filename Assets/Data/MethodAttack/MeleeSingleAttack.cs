@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MeleeSingleAttack : MeleeAttackBase
 {
-    public override void Apply(GameObject target)
+    public override void Apply(Transform obj, int dps, float attackInterval)
     {
-        if (target == null) return;
-        this.DelayAttack(target);
+        if (obj == null) return;
+        this.DealDamage(obj, dps, attackInterval);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
 public interface IDamageStrategy
-    {
-    void Apply(GameObject target);
-    }
+{
+    void Apply(Transform obj, int dps, float attackInterval);
+}
