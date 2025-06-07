@@ -8,14 +8,14 @@ public class KnightAttack : CharAttack
     {
         this.damageStrategy = new MeleeSingleAttack();
     }
-    protected override IEnumerator AttackRoutine(Transform obj, int dps, float attackInterval)
+    protected override IEnumerator AttackRoutine(DamageReceiver damageReceiver, int dps, float attackInterval)
     {
         while (true)
         {
             yield return new WaitForSeconds(attackInterval);
-            if (obj != null)
+            if (damageReceiver != null)
             {
-                this.damageStrategy.Apply(obj, dps, attackInterval);
+                this.damageStrategy.Apply(damageReceiver, dps, attackInterval);
             }
         }
     }

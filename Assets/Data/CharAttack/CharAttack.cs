@@ -9,17 +9,17 @@ public abstract class CharAttack : HungMonoBehaviour
     protected Coroutine attackCoroutine;
     protected IDamageStrategy damageStrategy;
    
-    public virtual void Attack(Transform obj)
+    public virtual void Attack(DamageReceiver damageReceiver)
     {
         
-        if (obj == null) this.StopAttacking();
-        if (obj!= null) this.StartAttacking(obj, this.dps, this.attackInterval);
+        if (damageReceiver == null) this.StopAttacking();
+        if (damageReceiver != null) this.StartAttacking(damageReceiver, this.dps, this.attackInterval);
     }
-    protected virtual void StartAttacking(Transform obj , int dps, float attackInterval)
+    protected virtual void StartAttacking(DamageReceiver damageReceiver , int dps, float attackInterval)
     {
         if (attackCoroutine == null)
         {
-            attackCoroutine = StartCoroutine(this.AttackRoutine(obj, dps, attackInterval));
+            attackCoroutine = StartCoroutine(this.AttackRoutine(damageReceiver, dps, attackInterval));
         }
     }
     protected virtual void StopAttacking()
@@ -30,5 +30,5 @@ public abstract class CharAttack : HungMonoBehaviour
             attackCoroutine = null;
         }
     }
-    protected abstract IEnumerator AttackRoutine(Transform obj, int dps, float attackInterval);
+    protected abstract IEnumerator AttackRoutine(DamageReceiver damageReceiver, int dps, float attackInterval);
 }

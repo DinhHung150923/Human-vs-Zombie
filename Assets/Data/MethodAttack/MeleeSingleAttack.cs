@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MeleeSingleAttack : MeleeAttackBase
 {
-    public override void Apply(Transform obj, int dps, float attackInterval)
+    // kieu tan cong can chien don muc tieu
+    public override void Apply(DamageReceiver damageReceiver, int dps, float attackInterval)
     {
-        if (obj == null) return;
-        this.DealDamage(obj, dps, attackInterval);
+        if (damageReceiver == null) return;
+        this.DealDamage(damageReceiver, dps, attackInterval);
     }
 }

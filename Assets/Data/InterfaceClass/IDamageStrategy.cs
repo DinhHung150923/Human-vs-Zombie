@@ -2,5 +2,5 @@
 using System.Collections;
 public interface IDamageStrategy
 {
-    void Apply(Transform obj, int dps, float attackInterval);
+    void Apply(DamageReceiver damageReceiver, int dps, float attackInterval);
 }

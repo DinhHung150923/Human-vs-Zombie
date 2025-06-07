@@ -11,6 +11,7 @@ public abstract class DamageReceiver : HungMonoBehaviour
     public int Hpmax => hpmax;
     [SerializeField] protected int timeDieDelay = 2;
     [SerializeField] protected CircleCollider2D circleCollider2D;
+    
     [SerializeField] protected bool isDead = false;
     protected override void Reset()
     {
@@ -33,6 +34,7 @@ public abstract class DamageReceiver : HungMonoBehaviour
         this.circleCollider2D.radius = 0.1f;
         Debug.LogWarning(transform.name + " :LoadCircleCollider2D", gameObject);
     }
+   
     protected virtual void FixedUpdate()
     {
         this.CheckIsDead();

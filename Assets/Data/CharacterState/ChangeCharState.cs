@@ -6,10 +6,6 @@ public class ChangeCharState : HungMonoBehaviour
 {
     public MainState currentMainState = MainState.Idle;
     [SerializeField] protected CharacterCtrl characterCtrl;
-    protected override void Start()
-    {
-        this.characterCtrl.ModelCtrl.Animator.SetBool("IsMoving", true);
-    }
     protected override void LoadComponent()
     {
         this.LoadCharacterCtrl();
